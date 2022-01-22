@@ -9,6 +9,7 @@ public class DeskManager : MonoBehaviour
     public int randMargin = 2;
     void Start()
     {
+        transform.Rotate(0, Random.Range(0,350), 0, Space.Self);
         StartCoroutine(SpawnUnits(Random.Range(numOfItems - randMargin, numOfItems + randMargin + 1)));
     }
     private IEnumerator SpawnUnits(int num)
@@ -21,7 +22,8 @@ public class DeskManager : MonoBehaviour
             GameObject item = Instantiate(tableTopStuff[Random.Range(0,tableTopStuff.Length)]);
             item.transform.parent = gameObject.transform;
             item.transform.localPosition = new Vector3(randx, 1, randz);
-            yield return new WaitForSeconds(0.5f);
+            item.transform.Rotate(0, Random.Range(0, 350), 0, Space.Self);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
