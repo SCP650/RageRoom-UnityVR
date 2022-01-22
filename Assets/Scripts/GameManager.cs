@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject randomRoom;
     private GameObject currRoomInstantce;
     public bool isTestingRandom = true;
+    public Material[] skyboxes;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void Randomize()
     {
+        RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
         Destroy(currRoomInstantce);
         SpawnRoom(randomRoom);
     }

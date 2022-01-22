@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+#if (UNITY_EDITOR) 
+ 
 [CustomEditor(typeof(GameManager))]
 public class RanButton: Editor
 {
@@ -16,3 +17,4 @@ public class RanButton: Editor
         DrawDefaultInspector();
     }
 }
+#endif
