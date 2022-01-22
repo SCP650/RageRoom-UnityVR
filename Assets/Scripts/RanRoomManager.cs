@@ -37,8 +37,8 @@ public class RanRoomManager : MonoBehaviour
 
     private Vector3 getRandLocaltion()
     {
-        float randx = Random.Range(16.0f, 26.0f);
-        float randz = Random.Range(-10.0f, 10.0f);
+        float randx = Random.Range(16.5f, 25.0f);
+        float randz = Random.Range(-9.5f, 9.5f);
         return new Vector3(randx, SpawnHeight, randz);
     }
 
@@ -46,7 +46,7 @@ public class RanRoomManager : MonoBehaviour
     {
         foreach (Vector3 local in localList)
         {
-            if (Vector3.Distance(local, newLocal) < 1.5f)
+            if (Vector3.Distance(local, newLocal) < 2f)
             {
                 return true;
             }
