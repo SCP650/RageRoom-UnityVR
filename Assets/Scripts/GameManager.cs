@@ -5,9 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager i { get; private set; }
-    public GameObject[] rooms;
-    public int currentRoom = -1;
+    public GameObject normalRoom;
+    public GameObject randomRoom;
     private GameObject currRoomInstantce;
+    public bool isTestingRandom = true;
 
     private void Awake()
     {
@@ -23,26 +24,29 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnRoom(i.currentRoom);
+        if (!isTestingRandom)
+        {
+            SpawnRoom(normalRoom);
+        }
+        
     }
 
-    private void SpawnRoom(int RoomNum)
+    private void SpawnRoom(GameObject room)
     {
-        currRoomInstantce = Instantiate(rooms[RoomNum]);
+        currRoomInstantce = Instantiate(room);
         currRoomInstantce.transform.position = Vector3.zero;
     }
 
     public void ResetRoom()
     {
         Destroy(currRoomInstantce);
-        SpawnRoom(currentRoom);
+        SpawnRoom(normalRoom);
     }
 
-    public void SpawnNextRoom()
+    public void Randomize()
     {
-        currentRoom += 1;
-        currentRoom %= rooms.Length;
-        SpawnRoom(currentRoom);
+        Destroy(currRoomInstantce);
+        SpawnRoom(randomRoom);
     }
 
 
